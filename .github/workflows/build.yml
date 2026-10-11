@@ -1,0 +1,18 @@
+name: Build and test
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Build x64 DLL and run native checks
+        shell: powershell
+        run: ./scripts/build.ps1
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: rp425-bluetooth-native-x64
+          path: |
+            build/RongtaRp425Bluetooth.dll
+            build/build-hash.json

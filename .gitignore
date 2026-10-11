@@ -1,0 +1,8 @@
+/build/
+*.user
+*.log
+*.prn
+*.spl
+*.nupkg
+/scripts/install-result.json
+/scripts/install-error.txt
