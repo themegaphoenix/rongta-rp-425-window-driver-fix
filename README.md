@@ -9,6 +9,35 @@ print spooler.
 This is an independent, experimental add-on, not an official Rongta driver.
 It does not modify or redistribute Rongta's renderer, installer or catalog.
 
+## Why this exists
+
+Pairing the RP425 in Windows did not make Bluetooth printing reliable on the
+setup that motivated this project. A queue using the installed Rongta-branded
+Seagull driver could report a job as printed even when no label came out.
+Correcting the outgoing COM port, restarting the spooler and disabling
+bidirectional monitoring did not resolve that behavior.
+
+The Chrome extension could print over its separate BLE connection, but required
+manual reconnection and a browser-based workflow. The goal was to select the
+printer in an ordinary Windows print dialog and let Windows manage the jobs.
+
+The decisive test was sending the driver's exact rendered label directly to
+the Bluetooth serial device: successive labels printed correctly. That showed
+the existing driver could produce usable print data and that the printer could
+receive it. The failing path was Windows' existing serial printing route; its
+exact underlying defect was not established.
+
+This monitor supplies an alternative delivery path inside the Windows spooler.
+It keeps the existing driver for rendering, reconnects to the actual Bluetooth
+serial device for each job, and reports transport failures back to the queue.
+It replaces the temporary Python bridge used to prove that approach, so normal
+printing no longer depends on a separate application running at sign-in.
+
+Use it if your RP425 has this kind of Bluetooth delivery problem. If your
+existing Windows Bluetooth queue already prints reliably, you do not need this
+add-on. These findings come from one tested setup, not evidence that every
+RP425 or Rongta driver has the same fault.
+
 ## Requirements
 
 - Windows x64 with its classic Bluetooth stack and print spooler enabled.
