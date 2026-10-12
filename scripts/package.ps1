@@ -12,6 +12,7 @@ $release = Join-Path $build 'release'
 New-Item -ItemType Directory -Path $release -Force | Out-Null
 $name = "rp425-bluetooth-native-$Version-windows-x64.zip"
 $path = Join-Path $release $name
+Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $stream = [IO.File]::Open($path, [IO.FileMode]::Create)
 $archive = $null
