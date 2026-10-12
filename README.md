@@ -55,7 +55,12 @@ This project does not change signing policies or enable test-signing.
 
 ## Build and test
 
-Install Microsoft's C++ Build Tools with its x64 compiler and a Windows SDK,
+For installation without compiling, download a **windows-x64.zip** asset from
+the repository's **Releases** page and follow [INSTALL.md](INSTALL.md). The asset
+includes all required scripts and matching binaries. GitHub's **Source code**
+ZIP and a DLL downloaded by itself are not ready-to-install packages.
+
+To build from a source checkout, install Microsoft's C++ Build Tools with its x64 compiler and a Windows SDK,
 then run from a normal 64-bit PowerShell terminal:
 
 ```powershell
@@ -69,7 +74,9 @@ C runtime and Windows system DLLs.
 
 GitHub Actions builds and runs the same checks on Windows. CI does not install
 the monitor or access Bluetooth hardware. Its artifact contains the DLL and
-matching build hash, not a vendor-signed driver package.
+matching build hash and installation instructions, not a vendor-signed driver
+package. Pushing a version tag builds/tests a new package and publishes an
+experimental pre-release; see [release instructions](docs/RELEASING.md).
 
 ## Find your printer address and driver
 

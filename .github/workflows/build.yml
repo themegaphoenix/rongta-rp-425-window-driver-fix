@@ -1,5 +1,10 @@
 name: Build and test
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -10,9 +15,14 @@ jobs:
       - name: Build x64 DLL and run native checks
         shell: powershell
         run: ./scripts/build.ps1
+      - name: Package ready-to-install artifact
+        shell: powershell
+        run: |
+          ./scripts/package.ps1 -Version ci
+          ./tests/package_tests.ps1 -Version ci
       - uses: actions/upload-artifact@v7.0.2
         with:
           name: rp425-bluetooth-native-x64
           path: |
-            build/RongtaRp425Bluetooth.dll
-            build/build-hash.json
+            build/release/*.zip
+            build/release/*.sha256
