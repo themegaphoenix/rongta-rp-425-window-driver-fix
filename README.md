@@ -171,3 +171,10 @@ checks. Review transport changes on a separate printer queue before deployment.
 
 License: [MIT](LICENSE). Windows SDKs and vendor drivers retain their own licenses
 and are not included in this repository.
+
+## Android companion and credits
+
+For Android, use [RP425 RLabel Handoff](https://github.com/themegaphoenix/rongta-rp425-android-rlabel-handoff): it sends system print documents to RLabel without manually saving the PDF. RLabel handles cropping and printing.
+
+Co-created by [themegaphoenix](https://github.com/themegaphoenix) and **ChatGPT**. See [AUTHORS.md](AUTHORS.md).
+
