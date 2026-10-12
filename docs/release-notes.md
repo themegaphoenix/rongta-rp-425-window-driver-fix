@@ -13,3 +13,7 @@ survived spooler reload and printed after a printer power cycle with an initial
 delay. The configurable public variant, full PC reboot recovery and interrupted
 physical transmission still need hardware validation. Bidirectional status is
 unsupported, and interrupted/retried jobs can produce duplicate labels.
+
+This release adds the [Android RLabel handoff companion](https://github.com/themegaphoenix/rongta-rp425-android-rlabel-handoff) and project credits. Windows monitor behavior is unchanged.
+
+Co-created by themegaphoenix and ChatGPT.
